@@ -8,7 +8,7 @@ function onReady() {
     $('#addJokeButton').on('click', submitJoke);
 }
 
-
+// GET request for the jokes array on the server
 function fetchJokes() {
     $.ajax({
         method: 'GET',
@@ -23,7 +23,7 @@ function fetchJokes() {
     });
 }
 
-
+// POST request to add joke using input fields
 function submitJoke() {
     if (areInputsEmpty()) {
         alert('Please make sure all input fields are filled properly.');
@@ -49,6 +49,7 @@ function submitJoke() {
 }
 
 
+// Updates the DOM to display contents of jokes array using response to GET request
 function displayJokes(jokeArray) {
     let el = $('#outputDiv');
     el.empty();
@@ -57,12 +58,16 @@ function displayJokes(jokeArray) {
     }
 }
 
+
+// Clears all input fields
 function clearInputs() {
     $('#whoseJokeIn').val('');
     $('#questionIn').val('');
     $('#punchlineIn').val('');
 }
 
+
+// checks if any input fields are empty. Function is call in the submitJoke ajax request
 function areInputsEmpty() {
     if ($('#whoseJokeIn').val() === '' || $('#questionIn').val() === '' || $('#punchlineIn').val() === '') {
         return true;
