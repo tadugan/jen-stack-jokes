@@ -29,9 +29,9 @@ function submitJoke() {
         method: 'POST',
         url: '/jokes',
         data: {
-            whoseJoke: "TODO:",
-            jokeQuestion: "TODO:",
-            punchLine: "TODO:"
+            whoseJoke: $('#whoseJokeIn').val(),
+            jokeQuestion: $('#questionIn').val(),
+            punchLine: $('#punchlineIn').val()
         }
     })
     .then(function (response) {
