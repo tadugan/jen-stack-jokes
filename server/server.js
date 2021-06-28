@@ -47,6 +47,15 @@ app.get('/jokes', (req, res) => {
 });
 
 
+// listener for POST request to add a joke
+app.post('/jokes', (req, res) => {
+  console.log('Adding a new joke');
+  let joke = req.body;
+  jokes.push(joke);
+  res.sendStatus(201);
+});
+
+
 app.listen(PORT, () => {
   console.log('server running on: ', PORT);
 }); // end spin up server

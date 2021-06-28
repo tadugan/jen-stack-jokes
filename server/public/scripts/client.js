@@ -5,7 +5,9 @@ $( document ).ready( onReady );
 function onReady() {
     console.log('DOM ready');
     fetchJokes();
+    $('#addJokeButton').on('click', submitJoke);
 }
+
 
 function fetchJokes() {
     $.ajax({
@@ -21,10 +23,31 @@ function fetchJokes() {
     });
 }
 
+
+function submitJoke() {
+    $.ajax({
+        method: 'POST',
+        url: '/jokes',
+        data: {
+            whoseJoke: "TODO:",
+            jokeQuestion: "TODO:",
+            punchLine: "TODO:"
+        }
+    })
+    .then(function (response) {
+        console.log(response);
+        fetchJokes();
+    })
+    .catch(function (err) {
+        console.log('Error', err);
+    });
+}
+
+
 function displayJokes(jokeArray) {
     let el = $('#outputDiv');
     el.empty();
     for (let joke of jokeArray) {
-        el.append(`<p>${joke.whoseJoke}: "${joke.jokeQuestion}" <br>     Answer: "${joke.punchLine}"</p>`);
+        el.append(`<p>${joke.whoseJoke}: "${joke.jokeQuestion}" <br> Answer: "${joke.punchLine}"</p>`);
     }
 }
