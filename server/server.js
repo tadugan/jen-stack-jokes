@@ -34,8 +34,18 @@ let jokes = [
   }
 ];
 
+
 // serve back static files
 app.use(express.static('server/public'));
+
+
+// ** CRUD Listeners ** 
+// listener for GET requests of all jokes
+app.get('/jokes', (req, res) => {
+  console.log('sending all jokes to client');
+  res.send(jokes);
+});
+
 
 app.listen(PORT, () => {
   console.log('server running on: ', PORT);

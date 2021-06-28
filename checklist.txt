@@ -1,0 +1,17 @@
+TODO:
+
+Required Features
+[ ] When the page loads, all jokes should be displayed on the DOM below the inputs
+[ ] User can add jokes using the input form
+[ ] After a joke is added, jokes on the DOM should be updated
+
+Client Side
+[ ] Create input fields, submit button for new joke data
+[ ] Make Ajax GET request to get all jokes from the Server
+[ ] Make Ajax POST request to add new jokes from input fields to Server
+[ ] Add listener to submit button to trigger GET request
+[ ] GET all jokes on page load
+
+Server Side
+[ ] Route GET requests to send all Jokes to Client
+[ ] Route POST request to add new joke to All Jokes on server
