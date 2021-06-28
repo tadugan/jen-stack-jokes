@@ -25,6 +25,10 @@ function fetchJokes() {
 
 
 function submitJoke() {
+    if (areInputsEmpty()) {
+        alert('Please make sure all input fields are filled properly.');
+        return;
+    }
     $.ajax({
         method: 'POST',
         url: '/jokes',
@@ -37,6 +41,7 @@ function submitJoke() {
     .then(function (response) {
         console.log(response);
         fetchJokes();
+        clearInputs();
     })
     .catch(function (err) {
         console.log('Error', err);
@@ -49,5 +54,17 @@ function displayJokes(jokeArray) {
     el.empty();
     for (let joke of jokeArray) {
         el.append(`<p>${joke.whoseJoke}: "${joke.jokeQuestion}" <br> Answer: "${joke.punchLine}"</p>`);
+    }
+}
+
+function clearInputs() {
+    $('#whoseJokeIn').val('');
+    $('#questionIn').val('');
+    $('#punchlineIn').val('');
+}
+
+function areInputsEmpty() {
+    if ($('#whoseJokeIn').val() === '' || $('#questionIn').val() === '' || $('#punchlineIn').val() === '') {
+        return true;
     }
 }
